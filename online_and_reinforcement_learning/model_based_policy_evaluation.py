@@ -5,14 +5,16 @@ p2 = np.genfromtxt('data_policy2.csv', delimiter=',')
 
 time = 25000
 gamma = 0.95
-states = range(0,5)
+states = range(0, 5)
+
+
 def MB_PE(data):
     # print("Running MB_PE...")
 
-    alpha = 1/5
+    alpha = 1 / 5
 
-    P_hat = np.zeros((5,5))
-    bigN = np.zeros((5,5))
+    P_hat = np.zeros((5, 5))
+    bigN = np.zeros((5, 5))
     smallN = np.zeros(5)
 
     ## Calc P_hat

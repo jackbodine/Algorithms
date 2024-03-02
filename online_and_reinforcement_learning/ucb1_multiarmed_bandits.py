@@ -5,9 +5,10 @@ import matplotlib.pyplot as plt
 K = 2
 T = 100000
 
-for DELTA in [1/4, 1/8, 1/16]:
+for DELTA in [1 / 4, 1 / 8, 1 / 16]:
 
     current_rewards = [0 for _ in range(K)]
+
 
     def genRewards():
         global current_rewards
@@ -45,9 +46,10 @@ for DELTA in [1/4, 1/8, 1/16]:
                 max_function_values = [
                     (arm_totals[i] / times_played[i]) + (math.sqrt((3 * math.log(t)) / (2 * times_played[i]))) for i in
                     range(K)]
-                At = max_function_values.index(max(max_function_values))    #arg max
+                At = max_function_values.index(max(max_function_values))  # arg max
                 opt_max_function_values = [
-                    (opt_arm_totals[i] / opt_times_played[i]) + (math.sqrt((math.log(t)) / (opt_times_played[i]))) for i in
+                    (opt_arm_totals[i] / opt_times_played[i]) + (math.sqrt((math.log(t)) / (opt_times_played[i]))) for i
+                    in
                     range(K)]
                 opt_At = opt_max_function_values.index(max(opt_max_function_values))
 
@@ -61,8 +63,11 @@ for DELTA in [1/4, 1/8, 1/16]:
             opt_arm_totals[opt_At] += current_rewards[opt_At]
 
             # Calc Delta
-            delta_values.append(max((arm_totals[0] / times_played[0]), arm_totals[1] / max(times_played[1],1)) - (arm_totals[At] / times_played[At]))  # This assumes the expected value is actually the mean. So we are doing mean(A*) - mean(value chose).
-            opt_delta_values.append(max((opt_arm_totals[0] / opt_times_played[0]), opt_arm_totals[1] / max(opt_times_played[1],1)) - (opt_arm_totals[opt_At] / opt_times_played[opt_At]))
+            delta_values.append(max((arm_totals[0] / times_played[0]), arm_totals[1] / max(times_played[1], 1)) - (
+                    arm_totals[At] / times_played[At]))
+            opt_delta_values.append(
+                max((opt_arm_totals[0] / opt_times_played[0]), opt_arm_totals[1] / max(opt_times_played[1], 1)) - (
+                        opt_arm_totals[opt_At] / opt_times_played[opt_At]))
 
             if t == 0:
                 regret[run].append(delta_values[At])
@@ -78,15 +83,15 @@ for DELTA in [1/4, 1/8, 1/16]:
         # print(reward_history)
 
     ### Plot Regret
-    avg_regrets = np.mean( np.array(regret), axis=0 )
-    deviation = np.std( np.array(regret), axis=0 )
-    opt_avg_regrets = np.mean( np.array(opt_regret), axis=0 )
-    opt_deviation = np.std( np.array(opt_regret), axis=0 )
+    avg_regrets = np.mean(np.array(regret), axis=0)
+    deviation = np.std(np.array(regret), axis=0)
+    opt_avg_regrets = np.mean(np.array(opt_regret), axis=0)
+    opt_deviation = np.std(np.array(opt_regret), axis=0)
     plt.plot(avg_regrets, label='UCB1', color='blue')
     plt.plot(avg_regrets + deviation, label='UCB1 Standard Deviation', color='blue', linestyle='dashed')
     plt.plot(opt_avg_regrets, label='UCB1 Optimized', color='orange')
-    plt.plot(opt_avg_regrets + opt_deviation, label='UCB1 Optimized Standard Deviation', color='orange', linestyle='dashed')
-
+    plt.plot(opt_avg_regrets + opt_deviation, label='UCB1 Optimized Standard Deviation', color='orange',
+             linestyle='dashed')
 
     # Different type of bounds.
     # plt.fill_between(range(T), avg_regrets + deviation, avg_regrets, alpha=.5, linewidth=0)
@@ -96,6 +101,5 @@ for DELTA in [1/4, 1/8, 1/16]:
     plt.xlabel('Rounds Played')
     plt.legend(loc='upper left')
     plt.show()
-
 
 print("DONE")

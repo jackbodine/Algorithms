@@ -1,5 +1,6 @@
 import numpy as np
 
+
 class DummyEnv:
     def __init__(self):
         self.nS = 2  # number of states
