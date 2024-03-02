@@ -1,7 +1,7 @@
 import numpy as np
 
 
-def value_iteration(env, gamma=0.90, epsilon=(10 ** -6)):
+def value_iteration(env, gamma=0.90, epsilon=(10**-6)):
     """
     Value Iteration is a reinforcement learning algorithm used in Markov Decision Processes to find the optimal policy
     by iteratively updating the values of all states towards the maximum expected return. It employs the Bellman

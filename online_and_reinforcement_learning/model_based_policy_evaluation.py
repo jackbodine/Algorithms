@@ -1,7 +1,7 @@
 import numpy as np
 
-p1 = np.genfromtxt('data_policy1.csv', delimiter=',')
-p2 = np.genfromtxt('data_policy2.csv', delimiter=',')
+p1 = np.genfromtxt("data_policy1.csv", delimiter=",")
+p2 = np.genfromtxt("data_policy2.csv", delimiter=",")
 
 time = 25000
 gamma = 0.95

@@ -2,8 +2,8 @@ import matplotlib.pyplot as plt
 import numpy
 import numpy as np
 
-p1 = np.genfromtxt('data_policy1.csv', delimiter=',')
-p2 = np.genfromtxt('data_policy2.csv', delimiter=',')
+p1 = np.genfromtxt("data_policy1.csv", delimiter=",")
+p2 = np.genfromtxt("data_policy2.csv", delimiter=",")
 
 time = 25000
 gamma = 0.95
@@ -32,7 +32,9 @@ def TD(data, func):
         for s in states:
             if line[0] == s:
                 Vplus1[s] = V[t][s] + (
-                        func(t + 1, occuranceSums[s]) * (line[2] + (gamma * V[t][int(line[3])]) - V[t][s]))
+                    func(t + 1, occuranceSums[s])
+                    * (line[2] + (gamma * V[t][int(line[3])]) - V[t][s])
+                )
             else:
                 Vplus1[s] = V[t][s]
 
