@@ -5,8 +5,9 @@ from online_and_reinforcement_learning.value_iteration import value_iteration
 
 env = DummyEnv()
 
+
 def test_value_iteration():
-    result = value_iteration(env, gamma=0.90, epsilon=(10 ** -6))
+    result = value_iteration(env, gamma=0.90, epsilon=(10**-6))
 
     # Check the validity of the output
     assert isinstance(result, np.ndarray), "Output should be a numpy array."
