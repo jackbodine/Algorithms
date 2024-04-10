@@ -35,8 +35,8 @@ def hedge(_, eta, sequence):
         p.append([0 for _ in As])
         for action in As:  # calculate p_t(a) for every a
             min_double_a = np.min([L[t - 1][a_double] for a_double in As])
-            p[t][action] = np.exp(-eta(t) * (L[t - 1][action]) - min_double_a) / sum(
-                [np.exp(-eta(t) * (L[t - 1][a]) - min_double_a) for a in As]
+            p[t][action] = np.exp(-eta(t) * (L[t - 1][action] - min_double_a)) / sum(
+                [np.exp(-eta(t) * (L[t - 1][a] - min_double_a)) for a in As]
             )
 
         # Choose action A_t from p_t
