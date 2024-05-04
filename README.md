@@ -3,3 +3,6 @@
 This repository contains my implementations of various algorithms and data structures. 
 I've written these for classes, practice or personal use. They are not properly maintained nor well documented.
 Being said, you are free to use them with attribution but know that there are almost certainly better options out there.
+
+Much of this code is written for assignmentments and includes headers/functions/definitions that may not be
+entirely my own work.
